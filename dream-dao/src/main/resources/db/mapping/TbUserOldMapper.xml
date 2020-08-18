@@ -1,0 +1,1210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tip.dream.dao.mapper.schema.TbUserOldMapper">
+  <resultMap id="BaseResultMap" type="tip.dream.dao.po.TbUserOld">
+    <id column="USER_ID" jdbcType="VARCHAR" property="USER_ID" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="USER_NAME" />
+    <result column="USER_NAME_PINYIN" jdbcType="VARCHAR" property="USER_NAME_PINYIN" />
+    <result column="IDCARD_START_TIME" jdbcType="TIMESTAMP" property="IDCARD_START_TIME" />
+    <result column="IDCARD_END_TIME" jdbcType="TIMESTAMP" property="IDCARD_END_TIME" />
+    <result column="IDCARD_TYPE" jdbcType="VARCHAR" property="IDCARD_TYPE" />
+    <result column="IDCARD_NO" jdbcType="VARCHAR" property="IDCARD_NO" />
+    <result column="IDCARD_HASH" jdbcType="VARCHAR" property="IDCARD_HASH" />
+    <result column="REAL_LEVEL" jdbcType="INTEGER" property="REAL_LEVEL" />
+    <result column="MOBILE" jdbcType="VARCHAR" property="MOBILE" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="EMAIL" />
+    <result column="AUTHENTICATE_TYPE" jdbcType="VARCHAR" property="AUTHENTICATE_TYPE" />
+    <result column="TYPE" jdbcType="VARCHAR" property="TYPE" />
+    <result column="STATUS" jdbcType="INTEGER" property="STATUS" />
+    <result column="REMARK" jdbcType="VARCHAR" property="REMARK" />
+    <result column="USER_MAIN_ID" jdbcType="VARCHAR" property="USER_MAIN_ID" />
+    <result column="ADD_TIME" jdbcType="TIMESTAMP" property="ADD_TIME" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="UPDATE_TIME" />
+    <result column="ADD_BY" jdbcType="VARCHAR" property="ADD_BY" />
+    <result column="UPDATE_BY" jdbcType="VARCHAR" property="UPDATE_BY" />
+    <result column="SEX" jdbcType="VARCHAR" property="SEX" />
+    <result column="BIRTHDAY" jdbcType="DATE" property="BIRTHDAY" />
+    <result column="NATIONALITY" jdbcType="VARCHAR" property="NATIONALITY" />
+    <result column="BIRTH_PLACE" jdbcType="VARCHAR" property="BIRTH_PLACE" />
+    <result column="USER_OFFICE_FAX" jdbcType="VARCHAR" property="USER_OFFICE_FAX" />
+    <result column="USER_OFFICE_PHONE" jdbcType="VARCHAR" property="USER_OFFICE_PHONE" />
+    <result column="ALGORITHM" jdbcType="VARCHAR" property="ALGORITHM" />
+    <result column="PWD_ENCRYPT" jdbcType="VARCHAR" property="PWD_ENCRYPT" />
+    <result column="VIRTUAL_USER_TYPE" jdbcType="VARCHAR" property="VIRTUAL_USER_TYPE" />
+    <result column="ORG_ID" jdbcType="VARCHAR" property="ORG_ID" />
+    <result column="PWD" jdbcType="VARCHAR" property="PWD" />
+    <result column="SHOW_ORDER" jdbcType="INTEGER" property="SHOW_ORDER" />
+    <result column="USER_POST" jdbcType="VARCHAR" property="USER_POST" />
+    <result column="USER_OFFICE_ADDRESS" jdbcType="VARCHAR" property="USER_OFFICE_ADDRESS" />
+    <result column="USER_TITLE" jdbcType="VARCHAR" property="USER_TITLE" />
+    <result column="CA_ID" jdbcType="VARCHAR" property="CA_ID" />
+    <result column="CERT_TYPE" jdbcType="VARCHAR" property="CERT_TYPE" />
+    <result column="PIN" jdbcType="VARCHAR" property="PIN" />
+    <result column="IS_ACTIVE" jdbcType="INTEGER" property="IS_ACTIVE" />
+    <result column="JOB_TITLE" jdbcType="VARCHAR" property="JOB_TITLE" />
+    <result column="LOGIN_NAME" jdbcType="VARCHAR" property="LOGIN_NAME" />
+    <result column="USER_NO" jdbcType="VARCHAR" property="USER_NO" />
+    <result column="EXTINFO" jdbcType="VARCHAR" property="EXTINFO" />
+    <result column="NUSER_HIREDATE" jdbcType="TIMESTAMP" property="NUSER_HIREDATE" />
+    <result column="NUSER_LEAVEDATE" jdbcType="TIMESTAMP" property="NUSER_LEAVEDATE" />
+    <result column="LEAVE_REASON" jdbcType="VARCHAR" property="LEAVE_REASON" />
+    <result column="COUNTRY" jdbcType="VARCHAR" property="COUNTRY" />
+    <result column="PRIVACY_LEVEL" jdbcType="VARCHAR" property="PRIVACY_LEVEL" />
+    <result column="TENANT_ID" jdbcType="VARCHAR" property="TENANT_ID" />
+    <result column="EXT" jdbcType="VARCHAR" property="EXT" />
+    <result column="USER_SANAME" jdbcType="VARCHAR" property="USER_SANAME" />
+    <result column="IS_MAIN_JOB_ORG" jdbcType="VARCHAR" property="IS_MAIN_JOB_ORG" />
+    <result column="GROUP_JOB_DUTY" jdbcType="VARCHAR" property="GROUP_JOB_DUTY" />
+    <result column="ORG_FULL_NAME" jdbcType="VARCHAR" property="ORG_FULL_NAME" />
+    <result column="ORG_JOB_DUTY" jdbcType="VARCHAR" property="ORG_JOB_DUTY" />
+    <result column="NODE_ID" jdbcType="VARCHAR" property="NODE_ID" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="tip.dream.dao.po.TbUserOld">
+    <result column="PHOTO" jdbcType="LONGVARBINARY" property="PHOTO" />
+    <result column="LEAVE_DESCRIPTION" jdbcType="LONGVARCHAR" property="LEAVE_DESCRIPTION" />
+    <result column="FACE_PHOTO" jdbcType="LONGVARCHAR" property="FACE_PHOTO" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    USER_ID, USER_NAME, USER_NAME_PINYIN, IDCARD_START_TIME, IDCARD_END_TIME, IDCARD_TYPE, 
+    IDCARD_NO, IDCARD_HASH, REAL_LEVEL, MOBILE, EMAIL, AUTHENTICATE_TYPE, TYPE, STATUS, 
+    REMARK, USER_MAIN_ID, ADD_TIME, UPDATE_TIME, ADD_BY, UPDATE_BY, SEX, BIRTHDAY, NATIONALITY, 
+    BIRTH_PLACE, USER_OFFICE_FAX, USER_OFFICE_PHONE, ALGORITHM, PWD_ENCRYPT, VIRTUAL_USER_TYPE, 
+    ORG_ID, PWD, SHOW_ORDER, USER_POST, USER_OFFICE_ADDRESS, USER_TITLE, CA_ID, CERT_TYPE, 
+    PIN, IS_ACTIVE, JOB_TITLE, LOGIN_NAME, USER_NO, EXTINFO, NUSER_HIREDATE, NUSER_LEAVEDATE, 
+    LEAVE_REASON, COUNTRY, PRIVACY_LEVEL, TENANT_ID, EXT, USER_SANAME, IS_MAIN_JOB_ORG, 
+    GROUP_JOB_DUTY, ORG_FULL_NAME, ORG_JOB_DUTY, NODE_ID
+  </sql>
+  <sql id="Blob_Column_List">
+    PHOTO, LEAVE_DESCRIPTION, FACE_PHOTO
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="tip.dream.dao.po.TbUserOldExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_user_old
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="tip.dream.dao.po.TbUserOldExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_user_old
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_user_old
+    where USER_ID = #{USER_ID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tb_user_old
+    where USER_ID = #{USER_ID,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="tip.dream.dao.po.TbUserOldExample">
+    delete from tb_user_old
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="tip.dream.dao.po.TbUserOld">
+    insert into tb_user_old (USER_ID, USER_NAME, USER_NAME_PINYIN, 
+      IDCARD_START_TIME, IDCARD_END_TIME, 
+      IDCARD_TYPE, IDCARD_NO, IDCARD_HASH, 
+      REAL_LEVEL, MOBILE, EMAIL, 
+      AUTHENTICATE_TYPE, TYPE, STATUS, 
+      REMARK, USER_MAIN_ID, ADD_TIME, 
+      UPDATE_TIME, ADD_BY, UPDATE_BY, 
+      SEX, BIRTHDAY, NATIONALITY, 
+      BIRTH_PLACE, USER_OFFICE_FAX, USER_OFFICE_PHONE, 
+      ALGORITHM, PWD_ENCRYPT, VIRTUAL_USER_TYPE, 
+      ORG_ID, PWD, SHOW_ORDER, 
+      USER_POST, USER_OFFICE_ADDRESS, USER_TITLE, 
+      CA_ID, CERT_TYPE, PIN, 
+      IS_ACTIVE, JOB_TITLE, LOGIN_NAME, 
+      USER_NO, EXTINFO, NUSER_HIREDATE, 
+      NUSER_LEAVEDATE, LEAVE_REASON, COUNTRY, 
+      PRIVACY_LEVEL, TENANT_ID, EXT, 
+      USER_SANAME, IS_MAIN_JOB_ORG, GROUP_JOB_DUTY, 
+      ORG_FULL_NAME, ORG_JOB_DUTY, NODE_ID, 
+      PHOTO, LEAVE_DESCRIPTION, FACE_PHOTO
+      )
+    values (#{USER_ID,jdbcType=VARCHAR}, #{USER_NAME,jdbcType=VARCHAR}, #{USER_NAME_PINYIN,jdbcType=VARCHAR}, 
+      #{IDCARD_START_TIME,jdbcType=TIMESTAMP}, #{IDCARD_END_TIME,jdbcType=TIMESTAMP}, 
+      #{IDCARD_TYPE,jdbcType=VARCHAR}, #{IDCARD_NO,jdbcType=VARCHAR}, #{IDCARD_HASH,jdbcType=VARCHAR}, 
+      #{REAL_LEVEL,jdbcType=INTEGER}, #{MOBILE,jdbcType=VARCHAR}, #{EMAIL,jdbcType=VARCHAR}, 
+      #{AUTHENTICATE_TYPE,jdbcType=VARCHAR}, #{TYPE,jdbcType=VARCHAR}, #{STATUS,jdbcType=INTEGER}, 
+      #{REMARK,jdbcType=VARCHAR}, #{USER_MAIN_ID,jdbcType=VARCHAR}, #{ADD_TIME,jdbcType=TIMESTAMP}, 
+      #{UPDATE_TIME,jdbcType=TIMESTAMP}, #{ADD_BY,jdbcType=VARCHAR}, #{UPDATE_BY,jdbcType=VARCHAR}, 
+      #{SEX,jdbcType=VARCHAR}, #{BIRTHDAY,jdbcType=DATE}, #{NATIONALITY,jdbcType=VARCHAR}, 
+      #{BIRTH_PLACE,jdbcType=VARCHAR}, #{USER_OFFICE_FAX,jdbcType=VARCHAR}, #{USER_OFFICE_PHONE,jdbcType=VARCHAR}, 
+      #{ALGORITHM,jdbcType=VARCHAR}, #{PWD_ENCRYPT,jdbcType=VARCHAR}, #{VIRTUAL_USER_TYPE,jdbcType=VARCHAR}, 
+      #{ORG_ID,jdbcType=VARCHAR}, #{PWD,jdbcType=VARCHAR}, #{SHOW_ORDER,jdbcType=INTEGER}, 
+      #{USER_POST,jdbcType=VARCHAR}, #{USER_OFFICE_ADDRESS,jdbcType=VARCHAR}, #{USER_TITLE,jdbcType=VARCHAR}, 
+      #{CA_ID,jdbcType=VARCHAR}, #{CERT_TYPE,jdbcType=VARCHAR}, #{PIN,jdbcType=VARCHAR}, 
+      #{IS_ACTIVE,jdbcType=INTEGER}, #{JOB_TITLE,jdbcType=VARCHAR}, #{LOGIN_NAME,jdbcType=VARCHAR}, 
+      #{USER_NO,jdbcType=VARCHAR}, #{EXTINFO,jdbcType=VARCHAR}, #{NUSER_HIREDATE,jdbcType=TIMESTAMP}, 
+      #{NUSER_LEAVEDATE,jdbcType=TIMESTAMP}, #{LEAVE_REASON,jdbcType=VARCHAR}, #{COUNTRY,jdbcType=VARCHAR}, 
+      #{PRIVACY_LEVEL,jdbcType=VARCHAR}, #{TENANT_ID,jdbcType=VARCHAR}, #{EXT,jdbcType=VARCHAR}, 
+      #{USER_SANAME,jdbcType=VARCHAR}, #{IS_MAIN_JOB_ORG,jdbcType=VARCHAR}, #{GROUP_JOB_DUTY,jdbcType=VARCHAR}, 
+      #{ORG_FULL_NAME,jdbcType=VARCHAR}, #{ORG_JOB_DUTY,jdbcType=VARCHAR}, #{NODE_ID,jdbcType=VARCHAR}, 
+      #{PHOTO,jdbcType=LONGVARBINARY}, #{LEAVE_DESCRIPTION,jdbcType=LONGVARCHAR}, #{FACE_PHOTO,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="tip.dream.dao.po.TbUserOld">
+    insert into tb_user_old
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="USER_ID != null">
+        USER_ID,
+      </if>
+      <if test="USER_NAME != null">
+        USER_NAME,
+      </if>
+      <if test="USER_NAME_PINYIN != null">
+        USER_NAME_PINYIN,
+      </if>
+      <if test="IDCARD_START_TIME != null">
+        IDCARD_START_TIME,
+      </if>
+      <if test="IDCARD_END_TIME != null">
+        IDCARD_END_TIME,
+      </if>
+      <if test="IDCARD_TYPE != null">
+        IDCARD_TYPE,
+      </if>
+      <if test="IDCARD_NO != null">
+        IDCARD_NO,
+      </if>
+      <if test="IDCARD_HASH != null">
+        IDCARD_HASH,
+      </if>
+      <if test="REAL_LEVEL != null">
+        REAL_LEVEL,
+      </if>
+      <if test="MOBILE != null">
+        MOBILE,
+      </if>
+      <if test="EMAIL != null">
+        EMAIL,
+      </if>
+      <if test="AUTHENTICATE_TYPE != null">
+        AUTHENTICATE_TYPE,
+      </if>
+      <if test="TYPE != null">
+        TYPE,
+      </if>
+      <if test="STATUS != null">
+        STATUS,
+      </if>
+      <if test="REMARK != null">
+        REMARK,
+      </if>
+      <if test="USER_MAIN_ID != null">
+        USER_MAIN_ID,
+      </if>
+      <if test="ADD_TIME != null">
+        ADD_TIME,
+      </if>
+      <if test="UPDATE_TIME != null">
+        UPDATE_TIME,
+      </if>
+      <if test="ADD_BY != null">
+        ADD_BY,
+      </if>
+      <if test="UPDATE_BY != null">
+        UPDATE_BY,
+      </if>
+      <if test="SEX != null">
+        SEX,
+      </if>
+      <if test="BIRTHDAY != null">
+        BIRTHDAY,
+      </if>
+      <if test="NATIONALITY != null">
+        NATIONALITY,
+      </if>
+      <if test="BIRTH_PLACE != null">
+        BIRTH_PLACE,
+      </if>
+      <if test="USER_OFFICE_FAX != null">
+        USER_OFFICE_FAX,
+      </if>
+      <if test="USER_OFFICE_PHONE != null">
+        USER_OFFICE_PHONE,
+      </if>
+      <if test="ALGORITHM != null">
+        ALGORITHM,
+      </if>
+      <if test="PWD_ENCRYPT != null">
+        PWD_ENCRYPT,
+      </if>
+      <if test="VIRTUAL_USER_TYPE != null">
+        VIRTUAL_USER_TYPE,
+      </if>
+      <if test="ORG_ID != null">
+        ORG_ID,
+      </if>
+      <if test="PWD != null">
+        PWD,
+      </if>
+      <if test="SHOW_ORDER != null">
+        SHOW_ORDER,
+      </if>
+      <if test="USER_POST != null">
+        USER_POST,
+      </if>
+      <if test="USER_OFFICE_ADDRESS != null">
+        USER_OFFICE_ADDRESS,
+      </if>
+      <if test="USER_TITLE != null">
+        USER_TITLE,
+      </if>
+      <if test="CA_ID != null">
+        CA_ID,
+      </if>
+      <if test="CERT_TYPE != null">
+        CERT_TYPE,
+      </if>
+      <if test="PIN != null">
+        PIN,
+      </if>
+      <if test="IS_ACTIVE != null">
+        IS_ACTIVE,
+      </if>
+      <if test="JOB_TITLE != null">
+        JOB_TITLE,
+      </if>
+      <if test="LOGIN_NAME != null">
+        LOGIN_NAME,
+      </if>
+      <if test="USER_NO != null">
+        USER_NO,
+      </if>
+      <if test="EXTINFO != null">
+        EXTINFO,
+      </if>
+      <if test="NUSER_HIREDATE != null">
+        NUSER_HIREDATE,
+      </if>
+      <if test="NUSER_LEAVEDATE != null">
+        NUSER_LEAVEDATE,
+      </if>
+      <if test="LEAVE_REASON != null">
+        LEAVE_REASON,
+      </if>
+      <if test="COUNTRY != null">
+        COUNTRY,
+      </if>
+      <if test="PRIVACY_LEVEL != null">
+        PRIVACY_LEVEL,
+      </if>
+      <if test="TENANT_ID != null">
+        TENANT_ID,
+      </if>
+      <if test="EXT != null">
+        EXT,
+      </if>
+      <if test="USER_SANAME != null">
+        USER_SANAME,
+      </if>
+      <if test="IS_MAIN_JOB_ORG != null">
+        IS_MAIN_JOB_ORG,
+      </if>
+      <if test="GROUP_JOB_DUTY != null">
+        GROUP_JOB_DUTY,
+      </if>
+      <if test="ORG_FULL_NAME != null">
+        ORG_FULL_NAME,
+      </if>
+      <if test="ORG_JOB_DUTY != null">
+        ORG_JOB_DUTY,
+      </if>
+      <if test="NODE_ID != null">
+        NODE_ID,
+      </if>
+      <if test="PHOTO != null">
+        PHOTO,
+      </if>
+      <if test="LEAVE_DESCRIPTION != null">
+        LEAVE_DESCRIPTION,
+      </if>
+      <if test="FACE_PHOTO != null">
+        FACE_PHOTO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="USER_ID != null">
+        #{USER_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_NAME != null">
+        #{USER_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_NAME_PINYIN != null">
+        #{USER_NAME_PINYIN,jdbcType=VARCHAR},
+      </if>
+      <if test="IDCARD_START_TIME != null">
+        #{IDCARD_START_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="IDCARD_END_TIME != null">
+        #{IDCARD_END_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="IDCARD_TYPE != null">
+        #{IDCARD_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="IDCARD_NO != null">
+        #{IDCARD_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="IDCARD_HASH != null">
+        #{IDCARD_HASH,jdbcType=VARCHAR},
+      </if>
+      <if test="REAL_LEVEL != null">
+        #{REAL_LEVEL,jdbcType=INTEGER},
+      </if>
+      <if test="MOBILE != null">
+        #{MOBILE,jdbcType=VARCHAR},
+      </if>
+      <if test="EMAIL != null">
+        #{EMAIL,jdbcType=VARCHAR},
+      </if>
+      <if test="AUTHENTICATE_TYPE != null">
+        #{AUTHENTICATE_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="TYPE != null">
+        #{TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="STATUS != null">
+        #{STATUS,jdbcType=INTEGER},
+      </if>
+      <if test="REMARK != null">
+        #{REMARK,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_MAIN_ID != null">
+        #{USER_MAIN_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="ADD_TIME != null">
+        #{ADD_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="UPDATE_TIME != null">
+        #{UPDATE_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ADD_BY != null">
+        #{ADD_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="UPDATE_BY != null">
+        #{UPDATE_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="SEX != null">
+        #{SEX,jdbcType=VARCHAR},
+      </if>
+      <if test="BIRTHDAY != null">
+        #{BIRTHDAY,jdbcType=DATE},
+      </if>
+      <if test="NATIONALITY != null">
+        #{NATIONALITY,jdbcType=VARCHAR},
+      </if>
+      <if test="BIRTH_PLACE != null">
+        #{BIRTH_PLACE,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_OFFICE_FAX != null">
+        #{USER_OFFICE_FAX,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_OFFICE_PHONE != null">
+        #{USER_OFFICE_PHONE,jdbcType=VARCHAR},
+      </if>
+      <if test="ALGORITHM != null">
+        #{ALGORITHM,jdbcType=VARCHAR},
+      </if>
+      <if test="PWD_ENCRYPT != null">
+        #{PWD_ENCRYPT,jdbcType=VARCHAR},
+      </if>
+      <if test="VIRTUAL_USER_TYPE != null">
+        #{VIRTUAL_USER_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="ORG_ID != null">
+        #{ORG_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="PWD != null">
+        #{PWD,jdbcType=VARCHAR},
+      </if>
+      <if test="SHOW_ORDER != null">
+        #{SHOW_ORDER,jdbcType=INTEGER},
+      </if>
+      <if test="USER_POST != null">
+        #{USER_POST,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_OFFICE_ADDRESS != null">
+        #{USER_OFFICE_ADDRESS,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_TITLE != null">
+        #{USER_TITLE,jdbcType=VARCHAR},
+      </if>
+      <if test="CA_ID != null">
+        #{CA_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="CERT_TYPE != null">
+        #{CERT_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="PIN != null">
+        #{PIN,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_ACTIVE != null">
+        #{IS_ACTIVE,jdbcType=INTEGER},
+      </if>
+      <if test="JOB_TITLE != null">
+        #{JOB_TITLE,jdbcType=VARCHAR},
+      </if>
+      <if test="LOGIN_NAME != null">
+        #{LOGIN_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_NO != null">
+        #{USER_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="EXTINFO != null">
+        #{EXTINFO,jdbcType=VARCHAR},
+      </if>
+      <if test="NUSER_HIREDATE != null">
+        #{NUSER_HIREDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="NUSER_LEAVEDATE != null">
+        #{NUSER_LEAVEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="LEAVE_REASON != null">
+        #{LEAVE_REASON,jdbcType=VARCHAR},
+      </if>
+      <if test="COUNTRY != null">
+        #{COUNTRY,jdbcType=VARCHAR},
+      </if>
+      <if test="PRIVACY_LEVEL != null">
+        #{PRIVACY_LEVEL,jdbcType=VARCHAR},
+      </if>
+      <if test="TENANT_ID != null">
+        #{TENANT_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="EXT != null">
+        #{EXT,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_SANAME != null">
+        #{USER_SANAME,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_MAIN_JOB_ORG != null">
+        #{IS_MAIN_JOB_ORG,jdbcType=VARCHAR},
+      </if>
+      <if test="GROUP_JOB_DUTY != null">
+        #{GROUP_JOB_DUTY,jdbcType=VARCHAR},
+      </if>
+      <if test="ORG_FULL_NAME != null">
+        #{ORG_FULL_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ORG_JOB_DUTY != null">
+        #{ORG_JOB_DUTY,jdbcType=VARCHAR},
+      </if>
+      <if test="NODE_ID != null">
+        #{NODE_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="PHOTO != null">
+        #{PHOTO,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="LEAVE_DESCRIPTION != null">
+        #{LEAVE_DESCRIPTION,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="FACE_PHOTO != null">
+        #{FACE_PHOTO,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="tip.dream.dao.po.TbUserOldExample" resultType="java.lang.Integer">
+    select count(*) from tb_user_old
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_user_old
+    <set>
+      <if test="record.USER_ID != null">
+        USER_ID = #{record.USER_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.USER_NAME != null">
+        USER_NAME = #{record.USER_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="record.USER_NAME_PINYIN != null">
+        USER_NAME_PINYIN = #{record.USER_NAME_PINYIN,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IDCARD_START_TIME != null">
+        IDCARD_START_TIME = #{record.IDCARD_START_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.IDCARD_END_TIME != null">
+        IDCARD_END_TIME = #{record.IDCARD_END_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.IDCARD_TYPE != null">
+        IDCARD_TYPE = #{record.IDCARD_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IDCARD_NO != null">
+        IDCARD_NO = #{record.IDCARD_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IDCARD_HASH != null">
+        IDCARD_HASH = #{record.IDCARD_HASH,jdbcType=VARCHAR},
+      </if>
+      <if test="record.REAL_LEVEL != null">
+        REAL_LEVEL = #{record.REAL_LEVEL,jdbcType=INTEGER},
+      </if>
+      <if test="record.MOBILE != null">
+        MOBILE = #{record.MOBILE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.EMAIL != null">
+        EMAIL = #{record.EMAIL,jdbcType=VARCHAR},
+      </if>
+      <if test="record.AUTHENTICATE_TYPE != null">
+        AUTHENTICATE_TYPE = #{record.AUTHENTICATE_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.TYPE != null">
+        TYPE = #{record.TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.STATUS != null">
+        STATUS = #{record.STATUS,jdbcType=INTEGER},
+      </if>
+      <if test="record.REMARK != null">
+        REMARK = #{record.REMARK,jdbcType=VARCHAR},
+      </if>
+      <if test="record.USER_MAIN_ID != null">
+        USER_MAIN_ID = #{record.USER_MAIN_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ADD_TIME != null">
+        ADD_TIME = #{record.ADD_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.UPDATE_TIME != null">
+        UPDATE_TIME = #{record.UPDATE_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ADD_BY != null">
+        ADD_BY = #{record.ADD_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="record.UPDATE_BY != null">
+        UPDATE_BY = #{record.UPDATE_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SEX != null">
+        SEX = #{record.SEX,jdbcType=VARCHAR},
+      </if>
+      <if test="record.BIRTHDAY != null">
+        BIRTHDAY = #{record.BIRTHDAY,jdbcType=DATE},
+      </if>
+      <if test="record.NATIONALITY != null">
+        NATIONALITY = #{record.NATIONALITY,jdbcType=VARCHAR},
+      </if>
+      <if test="record.BIRTH_PLACE != null">
+        BIRTH_PLACE = #{record.BIRTH_PLACE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.USER_OFFICE_FAX != null">
+        USER_OFFICE_FAX = #{record.USER_OFFICE_FAX,jdbcType=VARCHAR},
+      </if>
+      <if test="record.USER_OFFICE_PHONE != null">
+        USER_OFFICE_PHONE = #{record.USER_OFFICE_PHONE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ALGORITHM != null">
+        ALGORITHM = #{record.ALGORITHM,jdbcType=VARCHAR},
+      </if>
+      <if test="record.PWD_ENCRYPT != null">
+        PWD_ENCRYPT = #{record.PWD_ENCRYPT,jdbcType=VARCHAR},
+      </if>
+      <if test="record.VIRTUAL_USER_TYPE != null">
+        VIRTUAL_USER_TYPE = #{record.VIRTUAL_USER_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ORG_ID != null">
+        ORG_ID = #{record.ORG_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.PWD != null">
+        PWD = #{record.PWD,jdbcType=VARCHAR},
+      </if>
+      <if test="record.SHOW_ORDER != null">
+        SHOW_ORDER = #{record.SHOW_ORDER,jdbcType=INTEGER},
+      </if>
+      <if test="record.USER_POST != null">
+        USER_POST = #{record.USER_POST,jdbcType=VARCHAR},
+      </if>
+      <if test="record.USER_OFFICE_ADDRESS != null">
+        USER_OFFICE_ADDRESS = #{record.USER_OFFICE_ADDRESS,jdbcType=VARCHAR},
+      </if>
+      <if test="record.USER_TITLE != null">
+        USER_TITLE = #{record.USER_TITLE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.CA_ID != null">
+        CA_ID = #{record.CA_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.CERT_TYPE != null">
+        CERT_TYPE = #{record.CERT_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.PIN != null">
+        PIN = #{record.PIN,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IS_ACTIVE != null">
+        IS_ACTIVE = #{record.IS_ACTIVE,jdbcType=INTEGER},
+      </if>
+      <if test="record.JOB_TITLE != null">
+        JOB_TITLE = #{record.JOB_TITLE,jdbcType=VARCHAR},
+      </if>
+      <if test="record.LOGIN_NAME != null">
+        LOGIN_NAME = #{record.LOGIN_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="record.USER_NO != null">
+        USER_NO = #{record.USER_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="record.EXTINFO != null">
+        EXTINFO = #{record.EXTINFO,jdbcType=VARCHAR},
+      </if>
+      <if test="record.NUSER_HIREDATE != null">
+        NUSER_HIREDATE = #{record.NUSER_HIREDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.NUSER_LEAVEDATE != null">
+        NUSER_LEAVEDATE = #{record.NUSER_LEAVEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.LEAVE_REASON != null">
+        LEAVE_REASON = #{record.LEAVE_REASON,jdbcType=VARCHAR},
+      </if>
+      <if test="record.COUNTRY != null">
+        COUNTRY = #{record.COUNTRY,jdbcType=VARCHAR},
+      </if>
+      <if test="record.PRIVACY_LEVEL != null">
+        PRIVACY_LEVEL = #{record.PRIVACY_LEVEL,jdbcType=VARCHAR},
+      </if>
+      <if test="record.TENANT_ID != null">
+        TENANT_ID = #{record.TENANT_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.EXT != null">
+        EXT = #{record.EXT,jdbcType=VARCHAR},
+      </if>
+      <if test="record.USER_SANAME != null">
+        USER_SANAME = #{record.USER_SANAME,jdbcType=VARCHAR},
+      </if>
+      <if test="record.IS_MAIN_JOB_ORG != null">
+        IS_MAIN_JOB_ORG = #{record.IS_MAIN_JOB_ORG,jdbcType=VARCHAR},
+      </if>
+      <if test="record.GROUP_JOB_DUTY != null">
+        GROUP_JOB_DUTY = #{record.GROUP_JOB_DUTY,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ORG_FULL_NAME != null">
+        ORG_FULL_NAME = #{record.ORG_FULL_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ORG_JOB_DUTY != null">
+        ORG_JOB_DUTY = #{record.ORG_JOB_DUTY,jdbcType=VARCHAR},
+      </if>
+      <if test="record.NODE_ID != null">
+        NODE_ID = #{record.NODE_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.PHOTO != null">
+        PHOTO = #{record.PHOTO,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.LEAVE_DESCRIPTION != null">
+        LEAVE_DESCRIPTION = #{record.LEAVE_DESCRIPTION,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.FACE_PHOTO != null">
+        FACE_PHOTO = #{record.FACE_PHOTO,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update tb_user_old
+    set USER_ID = #{record.USER_ID,jdbcType=VARCHAR},
+      USER_NAME = #{record.USER_NAME,jdbcType=VARCHAR},
+      USER_NAME_PINYIN = #{record.USER_NAME_PINYIN,jdbcType=VARCHAR},
+      IDCARD_START_TIME = #{record.IDCARD_START_TIME,jdbcType=TIMESTAMP},
+      IDCARD_END_TIME = #{record.IDCARD_END_TIME,jdbcType=TIMESTAMP},
+      IDCARD_TYPE = #{record.IDCARD_TYPE,jdbcType=VARCHAR},
+      IDCARD_NO = #{record.IDCARD_NO,jdbcType=VARCHAR},
+      IDCARD_HASH = #{record.IDCARD_HASH,jdbcType=VARCHAR},
+      REAL_LEVEL = #{record.REAL_LEVEL,jdbcType=INTEGER},
+      MOBILE = #{record.MOBILE,jdbcType=VARCHAR},
+      EMAIL = #{record.EMAIL,jdbcType=VARCHAR},
+      AUTHENTICATE_TYPE = #{record.AUTHENTICATE_TYPE,jdbcType=VARCHAR},
+      TYPE = #{record.TYPE,jdbcType=VARCHAR},
+      STATUS = #{record.STATUS,jdbcType=INTEGER},
+      REMARK = #{record.REMARK,jdbcType=VARCHAR},
+      USER_MAIN_ID = #{record.USER_MAIN_ID,jdbcType=VARCHAR},
+      ADD_TIME = #{record.ADD_TIME,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{record.UPDATE_TIME,jdbcType=TIMESTAMP},
+      ADD_BY = #{record.ADD_BY,jdbcType=VARCHAR},
+      UPDATE_BY = #{record.UPDATE_BY,jdbcType=VARCHAR},
+      SEX = #{record.SEX,jdbcType=VARCHAR},
+      BIRTHDAY = #{record.BIRTHDAY,jdbcType=DATE},
+      NATIONALITY = #{record.NATIONALITY,jdbcType=VARCHAR},
+      BIRTH_PLACE = #{record.BIRTH_PLACE,jdbcType=VARCHAR},
+      USER_OFFICE_FAX = #{record.USER_OFFICE_FAX,jdbcType=VARCHAR},
+      USER_OFFICE_PHONE = #{record.USER_OFFICE_PHONE,jdbcType=VARCHAR},
+      ALGORITHM = #{record.ALGORITHM,jdbcType=VARCHAR},
+      PWD_ENCRYPT = #{record.PWD_ENCRYPT,jdbcType=VARCHAR},
+      VIRTUAL_USER_TYPE = #{record.VIRTUAL_USER_TYPE,jdbcType=VARCHAR},
+      ORG_ID = #{record.ORG_ID,jdbcType=VARCHAR},
+      PWD = #{record.PWD,jdbcType=VARCHAR},
+      SHOW_ORDER = #{record.SHOW_ORDER,jdbcType=INTEGER},
+      USER_POST = #{record.USER_POST,jdbcType=VARCHAR},
+      USER_OFFICE_ADDRESS = #{record.USER_OFFICE_ADDRESS,jdbcType=VARCHAR},
+      USER_TITLE = #{record.USER_TITLE,jdbcType=VARCHAR},
+      CA_ID = #{record.CA_ID,jdbcType=VARCHAR},
+      CERT_TYPE = #{record.CERT_TYPE,jdbcType=VARCHAR},
+      PIN = #{record.PIN,jdbcType=VARCHAR},
+      IS_ACTIVE = #{record.IS_ACTIVE,jdbcType=INTEGER},
+      JOB_TITLE = #{record.JOB_TITLE,jdbcType=VARCHAR},
+      LOGIN_NAME = #{record.LOGIN_NAME,jdbcType=VARCHAR},
+      USER_NO = #{record.USER_NO,jdbcType=VARCHAR},
+      EXTINFO = #{record.EXTINFO,jdbcType=VARCHAR},
+      NUSER_HIREDATE = #{record.NUSER_HIREDATE,jdbcType=TIMESTAMP},
+      NUSER_LEAVEDATE = #{record.NUSER_LEAVEDATE,jdbcType=TIMESTAMP},
+      LEAVE_REASON = #{record.LEAVE_REASON,jdbcType=VARCHAR},
+      COUNTRY = #{record.COUNTRY,jdbcType=VARCHAR},
+      PRIVACY_LEVEL = #{record.PRIVACY_LEVEL,jdbcType=VARCHAR},
+      TENANT_ID = #{record.TENANT_ID,jdbcType=VARCHAR},
+      EXT = #{record.EXT,jdbcType=VARCHAR},
+      USER_SANAME = #{record.USER_SANAME,jdbcType=VARCHAR},
+      IS_MAIN_JOB_ORG = #{record.IS_MAIN_JOB_ORG,jdbcType=VARCHAR},
+      GROUP_JOB_DUTY = #{record.GROUP_JOB_DUTY,jdbcType=VARCHAR},
+      ORG_FULL_NAME = #{record.ORG_FULL_NAME,jdbcType=VARCHAR},
+      ORG_JOB_DUTY = #{record.ORG_JOB_DUTY,jdbcType=VARCHAR},
+      NODE_ID = #{record.NODE_ID,jdbcType=VARCHAR},
+      PHOTO = #{record.PHOTO,jdbcType=LONGVARBINARY},
+      LEAVE_DESCRIPTION = #{record.LEAVE_DESCRIPTION,jdbcType=LONGVARCHAR},
+      FACE_PHOTO = #{record.FACE_PHOTO,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_user_old
+    set USER_ID = #{record.USER_ID,jdbcType=VARCHAR},
+      USER_NAME = #{record.USER_NAME,jdbcType=VARCHAR},
+      USER_NAME_PINYIN = #{record.USER_NAME_PINYIN,jdbcType=VARCHAR},
+      IDCARD_START_TIME = #{record.IDCARD_START_TIME,jdbcType=TIMESTAMP},
+      IDCARD_END_TIME = #{record.IDCARD_END_TIME,jdbcType=TIMESTAMP},
+      IDCARD_TYPE = #{record.IDCARD_TYPE,jdbcType=VARCHAR},
+      IDCARD_NO = #{record.IDCARD_NO,jdbcType=VARCHAR},
+      IDCARD_HASH = #{record.IDCARD_HASH,jdbcType=VARCHAR},
+      REAL_LEVEL = #{record.REAL_LEVEL,jdbcType=INTEGER},
+      MOBILE = #{record.MOBILE,jdbcType=VARCHAR},
+      EMAIL = #{record.EMAIL,jdbcType=VARCHAR},
+      AUTHENTICATE_TYPE = #{record.AUTHENTICATE_TYPE,jdbcType=VARCHAR},
+      TYPE = #{record.TYPE,jdbcType=VARCHAR},
+      STATUS = #{record.STATUS,jdbcType=INTEGER},
+      REMARK = #{record.REMARK,jdbcType=VARCHAR},
+      USER_MAIN_ID = #{record.USER_MAIN_ID,jdbcType=VARCHAR},
+      ADD_TIME = #{record.ADD_TIME,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{record.UPDATE_TIME,jdbcType=TIMESTAMP},
+      ADD_BY = #{record.ADD_BY,jdbcType=VARCHAR},
+      UPDATE_BY = #{record.UPDATE_BY,jdbcType=VARCHAR},
+      SEX = #{record.SEX,jdbcType=VARCHAR},
+      BIRTHDAY = #{record.BIRTHDAY,jdbcType=DATE},
+      NATIONALITY = #{record.NATIONALITY,jdbcType=VARCHAR},
+      BIRTH_PLACE = #{record.BIRTH_PLACE,jdbcType=VARCHAR},
+      USER_OFFICE_FAX = #{record.USER_OFFICE_FAX,jdbcType=VARCHAR},
+      USER_OFFICE_PHONE = #{record.USER_OFFICE_PHONE,jdbcType=VARCHAR},
+      ALGORITHM = #{record.ALGORITHM,jdbcType=VARCHAR},
+      PWD_ENCRYPT = #{record.PWD_ENCRYPT,jdbcType=VARCHAR},
+      VIRTUAL_USER_TYPE = #{record.VIRTUAL_USER_TYPE,jdbcType=VARCHAR},
+      ORG_ID = #{record.ORG_ID,jdbcType=VARCHAR},
+      PWD = #{record.PWD,jdbcType=VARCHAR},
+      SHOW_ORDER = #{record.SHOW_ORDER,jdbcType=INTEGER},
+      USER_POST = #{record.USER_POST,jdbcType=VARCHAR},
+      USER_OFFICE_ADDRESS = #{record.USER_OFFICE_ADDRESS,jdbcType=VARCHAR},
+      USER_TITLE = #{record.USER_TITLE,jdbcType=VARCHAR},
+      CA_ID = #{record.CA_ID,jdbcType=VARCHAR},
+      CERT_TYPE = #{record.CERT_TYPE,jdbcType=VARCHAR},
+      PIN = #{record.PIN,jdbcType=VARCHAR},
+      IS_ACTIVE = #{record.IS_ACTIVE,jdbcType=INTEGER},
+      JOB_TITLE = #{record.JOB_TITLE,jdbcType=VARCHAR},
+      LOGIN_NAME = #{record.LOGIN_NAME,jdbcType=VARCHAR},
+      USER_NO = #{record.USER_NO,jdbcType=VARCHAR},
+      EXTINFO = #{record.EXTINFO,jdbcType=VARCHAR},
+      NUSER_HIREDATE = #{record.NUSER_HIREDATE,jdbcType=TIMESTAMP},
+      NUSER_LEAVEDATE = #{record.NUSER_LEAVEDATE,jdbcType=TIMESTAMP},
+      LEAVE_REASON = #{record.LEAVE_REASON,jdbcType=VARCHAR},
+      COUNTRY = #{record.COUNTRY,jdbcType=VARCHAR},
+      PRIVACY_LEVEL = #{record.PRIVACY_LEVEL,jdbcType=VARCHAR},
+      TENANT_ID = #{record.TENANT_ID,jdbcType=VARCHAR},
+      EXT = #{record.EXT,jdbcType=VARCHAR},
+      USER_SANAME = #{record.USER_SANAME,jdbcType=VARCHAR},
+      IS_MAIN_JOB_ORG = #{record.IS_MAIN_JOB_ORG,jdbcType=VARCHAR},
+      GROUP_JOB_DUTY = #{record.GROUP_JOB_DUTY,jdbcType=VARCHAR},
+      ORG_FULL_NAME = #{record.ORG_FULL_NAME,jdbcType=VARCHAR},
+      ORG_JOB_DUTY = #{record.ORG_JOB_DUTY,jdbcType=VARCHAR},
+      NODE_ID = #{record.NODE_ID,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="tip.dream.dao.po.TbUserOld">
+    update tb_user_old
+    <set>
+      <if test="USER_NAME != null">
+        USER_NAME = #{USER_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_NAME_PINYIN != null">
+        USER_NAME_PINYIN = #{USER_NAME_PINYIN,jdbcType=VARCHAR},
+      </if>
+      <if test="IDCARD_START_TIME != null">
+        IDCARD_START_TIME = #{IDCARD_START_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="IDCARD_END_TIME != null">
+        IDCARD_END_TIME = #{IDCARD_END_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="IDCARD_TYPE != null">
+        IDCARD_TYPE = #{IDCARD_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="IDCARD_NO != null">
+        IDCARD_NO = #{IDCARD_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="IDCARD_HASH != null">
+        IDCARD_HASH = #{IDCARD_HASH,jdbcType=VARCHAR},
+      </if>
+      <if test="REAL_LEVEL != null">
+        REAL_LEVEL = #{REAL_LEVEL,jdbcType=INTEGER},
+      </if>
+      <if test="MOBILE != null">
+        MOBILE = #{MOBILE,jdbcType=VARCHAR},
+      </if>
+      <if test="EMAIL != null">
+        EMAIL = #{EMAIL,jdbcType=VARCHAR},
+      </if>
+      <if test="AUTHENTICATE_TYPE != null">
+        AUTHENTICATE_TYPE = #{AUTHENTICATE_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="TYPE != null">
+        TYPE = #{TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="STATUS != null">
+        STATUS = #{STATUS,jdbcType=INTEGER},
+      </if>
+      <if test="REMARK != null">
+        REMARK = #{REMARK,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_MAIN_ID != null">
+        USER_MAIN_ID = #{USER_MAIN_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="ADD_TIME != null">
+        ADD_TIME = #{ADD_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="UPDATE_TIME != null">
+        UPDATE_TIME = #{UPDATE_TIME,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ADD_BY != null">
+        ADD_BY = #{ADD_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="UPDATE_BY != null">
+        UPDATE_BY = #{UPDATE_BY,jdbcType=VARCHAR},
+      </if>
+      <if test="SEX != null">
+        SEX = #{SEX,jdbcType=VARCHAR},
+      </if>
+      <if test="BIRTHDAY != null">
+        BIRTHDAY = #{BIRTHDAY,jdbcType=DATE},
+      </if>
+      <if test="NATIONALITY != null">
+        NATIONALITY = #{NATIONALITY,jdbcType=VARCHAR},
+      </if>
+      <if test="BIRTH_PLACE != null">
+        BIRTH_PLACE = #{BIRTH_PLACE,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_OFFICE_FAX != null">
+        USER_OFFICE_FAX = #{USER_OFFICE_FAX,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_OFFICE_PHONE != null">
+        USER_OFFICE_PHONE = #{USER_OFFICE_PHONE,jdbcType=VARCHAR},
+      </if>
+      <if test="ALGORITHM != null">
+        ALGORITHM = #{ALGORITHM,jdbcType=VARCHAR},
+      </if>
+      <if test="PWD_ENCRYPT != null">
+        PWD_ENCRYPT = #{PWD_ENCRYPT,jdbcType=VARCHAR},
+      </if>
+      <if test="VIRTUAL_USER_TYPE != null">
+        VIRTUAL_USER_TYPE = #{VIRTUAL_USER_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="ORG_ID != null">
+        ORG_ID = #{ORG_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="PWD != null">
+        PWD = #{PWD,jdbcType=VARCHAR},
+      </if>
+      <if test="SHOW_ORDER != null">
+        SHOW_ORDER = #{SHOW_ORDER,jdbcType=INTEGER},
+      </if>
+      <if test="USER_POST != null">
+        USER_POST = #{USER_POST,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_OFFICE_ADDRESS != null">
+        USER_OFFICE_ADDRESS = #{USER_OFFICE_ADDRESS,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_TITLE != null">
+        USER_TITLE = #{USER_TITLE,jdbcType=VARCHAR},
+      </if>
+      <if test="CA_ID != null">
+        CA_ID = #{CA_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="CERT_TYPE != null">
+        CERT_TYPE = #{CERT_TYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="PIN != null">
+        PIN = #{PIN,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_ACTIVE != null">
+        IS_ACTIVE = #{IS_ACTIVE,jdbcType=INTEGER},
+      </if>
+      <if test="JOB_TITLE != null">
+        JOB_TITLE = #{JOB_TITLE,jdbcType=VARCHAR},
+      </if>
+      <if test="LOGIN_NAME != null">
+        LOGIN_NAME = #{LOGIN_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_NO != null">
+        USER_NO = #{USER_NO,jdbcType=VARCHAR},
+      </if>
+      <if test="EXTINFO != null">
+        EXTINFO = #{EXTINFO,jdbcType=VARCHAR},
+      </if>
+      <if test="NUSER_HIREDATE != null">
+        NUSER_HIREDATE = #{NUSER_HIREDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="NUSER_LEAVEDATE != null">
+        NUSER_LEAVEDATE = #{NUSER_LEAVEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="LEAVE_REASON != null">
+        LEAVE_REASON = #{LEAVE_REASON,jdbcType=VARCHAR},
+      </if>
+      <if test="COUNTRY != null">
+        COUNTRY = #{COUNTRY,jdbcType=VARCHAR},
+      </if>
+      <if test="PRIVACY_LEVEL != null">
+        PRIVACY_LEVEL = #{PRIVACY_LEVEL,jdbcType=VARCHAR},
+      </if>
+      <if test="TENANT_ID != null">
+        TENANT_ID = #{TENANT_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="EXT != null">
+        EXT = #{EXT,jdbcType=VARCHAR},
+      </if>
+      <if test="USER_SANAME != null">
+        USER_SANAME = #{USER_SANAME,jdbcType=VARCHAR},
+      </if>
+      <if test="IS_MAIN_JOB_ORG != null">
+        IS_MAIN_JOB_ORG = #{IS_MAIN_JOB_ORG,jdbcType=VARCHAR},
+      </if>
+      <if test="GROUP_JOB_DUTY != null">
+        GROUP_JOB_DUTY = #{GROUP_JOB_DUTY,jdbcType=VARCHAR},
+      </if>
+      <if test="ORG_FULL_NAME != null">
+        ORG_FULL_NAME = #{ORG_FULL_NAME,jdbcType=VARCHAR},
+      </if>
+      <if test="ORG_JOB_DUTY != null">
+        ORG_JOB_DUTY = #{ORG_JOB_DUTY,jdbcType=VARCHAR},
+      </if>
+      <if test="NODE_ID != null">
+        NODE_ID = #{NODE_ID,jdbcType=VARCHAR},
+      </if>
+      <if test="PHOTO != null">
+        PHOTO = #{PHOTO,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="LEAVE_DESCRIPTION != null">
+        LEAVE_DESCRIPTION = #{LEAVE_DESCRIPTION,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="FACE_PHOTO != null">
+        FACE_PHOTO = #{FACE_PHOTO,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where USER_ID = #{USER_ID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="tip.dream.dao.po.TbUserOld">
+    update tb_user_old
+    set USER_NAME = #{USER_NAME,jdbcType=VARCHAR},
+      USER_NAME_PINYIN = #{USER_NAME_PINYIN,jdbcType=VARCHAR},
+      IDCARD_START_TIME = #{IDCARD_START_TIME,jdbcType=TIMESTAMP},
+      IDCARD_END_TIME = #{IDCARD_END_TIME,jdbcType=TIMESTAMP},
+      IDCARD_TYPE = #{IDCARD_TYPE,jdbcType=VARCHAR},
+      IDCARD_NO = #{IDCARD_NO,jdbcType=VARCHAR},
+      IDCARD_HASH = #{IDCARD_HASH,jdbcType=VARCHAR},
+      REAL_LEVEL = #{REAL_LEVEL,jdbcType=INTEGER},
+      MOBILE = #{MOBILE,jdbcType=VARCHAR},
+      EMAIL = #{EMAIL,jdbcType=VARCHAR},
+      AUTHENTICATE_TYPE = #{AUTHENTICATE_TYPE,jdbcType=VARCHAR},
+      TYPE = #{TYPE,jdbcType=VARCHAR},
+      STATUS = #{STATUS,jdbcType=INTEGER},
+      REMARK = #{REMARK,jdbcType=VARCHAR},
+      USER_MAIN_ID = #{USER_MAIN_ID,jdbcType=VARCHAR},
+      ADD_TIME = #{ADD_TIME,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{UPDATE_TIME,jdbcType=TIMESTAMP},
+      ADD_BY = #{ADD_BY,jdbcType=VARCHAR},
+      UPDATE_BY = #{UPDATE_BY,jdbcType=VARCHAR},
+      SEX = #{SEX,jdbcType=VARCHAR},
+      BIRTHDAY = #{BIRTHDAY,jdbcType=DATE},
+      NATIONALITY = #{NATIONALITY,jdbcType=VARCHAR},
+      BIRTH_PLACE = #{BIRTH_PLACE,jdbcType=VARCHAR},
+      USER_OFFICE_FAX = #{USER_OFFICE_FAX,jdbcType=VARCHAR},
+      USER_OFFICE_PHONE = #{USER_OFFICE_PHONE,jdbcType=VARCHAR},
+      ALGORITHM = #{ALGORITHM,jdbcType=VARCHAR},
+      PWD_ENCRYPT = #{PWD_ENCRYPT,jdbcType=VARCHAR},
+      VIRTUAL_USER_TYPE = #{VIRTUAL_USER_TYPE,jdbcType=VARCHAR},
+      ORG_ID = #{ORG_ID,jdbcType=VARCHAR},
+      PWD = #{PWD,jdbcType=VARCHAR},
+      SHOW_ORDER = #{SHOW_ORDER,jdbcType=INTEGER},
+      USER_POST = #{USER_POST,jdbcType=VARCHAR},
+      USER_OFFICE_ADDRESS = #{USER_OFFICE_ADDRESS,jdbcType=VARCHAR},
+      USER_TITLE = #{USER_TITLE,jdbcType=VARCHAR},
+      CA_ID = #{CA_ID,jdbcType=VARCHAR},
+      CERT_TYPE = #{CERT_TYPE,jdbcType=VARCHAR},
+      PIN = #{PIN,jdbcType=VARCHAR},
+      IS_ACTIVE = #{IS_ACTIVE,jdbcType=INTEGER},
+      JOB_TITLE = #{JOB_TITLE,jdbcType=VARCHAR},
+      LOGIN_NAME = #{LOGIN_NAME,jdbcType=VARCHAR},
+      USER_NO = #{USER_NO,jdbcType=VARCHAR},
+      EXTINFO = #{EXTINFO,jdbcType=VARCHAR},
+      NUSER_HIREDATE = #{NUSER_HIREDATE,jdbcType=TIMESTAMP},
+      NUSER_LEAVEDATE = #{NUSER_LEAVEDATE,jdbcType=TIMESTAMP},
+      LEAVE_REASON = #{LEAVE_REASON,jdbcType=VARCHAR},
+      COUNTRY = #{COUNTRY,jdbcType=VARCHAR},
+      PRIVACY_LEVEL = #{PRIVACY_LEVEL,jdbcType=VARCHAR},
+      TENANT_ID = #{TENANT_ID,jdbcType=VARCHAR},
+      EXT = #{EXT,jdbcType=VARCHAR},
+      USER_SANAME = #{USER_SANAME,jdbcType=VARCHAR},
+      IS_MAIN_JOB_ORG = #{IS_MAIN_JOB_ORG,jdbcType=VARCHAR},
+      GROUP_JOB_DUTY = #{GROUP_JOB_DUTY,jdbcType=VARCHAR},
+      ORG_FULL_NAME = #{ORG_FULL_NAME,jdbcType=VARCHAR},
+      ORG_JOB_DUTY = #{ORG_JOB_DUTY,jdbcType=VARCHAR},
+      NODE_ID = #{NODE_ID,jdbcType=VARCHAR},
+      PHOTO = #{PHOTO,jdbcType=LONGVARBINARY},
+      LEAVE_DESCRIPTION = #{LEAVE_DESCRIPTION,jdbcType=LONGVARCHAR},
+      FACE_PHOTO = #{FACE_PHOTO,jdbcType=LONGVARCHAR}
+    where USER_ID = #{USER_ID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="tip.dream.dao.po.TbUserOld">
+    update tb_user_old
+    set USER_NAME = #{USER_NAME,jdbcType=VARCHAR},
+      USER_NAME_PINYIN = #{USER_NAME_PINYIN,jdbcType=VARCHAR},
+      IDCARD_START_TIME = #{IDCARD_START_TIME,jdbcType=TIMESTAMP},
+      IDCARD_END_TIME = #{IDCARD_END_TIME,jdbcType=TIMESTAMP},
+      IDCARD_TYPE = #{IDCARD_TYPE,jdbcType=VARCHAR},
+      IDCARD_NO = #{IDCARD_NO,jdbcType=VARCHAR},
+      IDCARD_HASH = #{IDCARD_HASH,jdbcType=VARCHAR},
+      REAL_LEVEL = #{REAL_LEVEL,jdbcType=INTEGER},
+      MOBILE = #{MOBILE,jdbcType=VARCHAR},
+      EMAIL = #{EMAIL,jdbcType=VARCHAR},
+      AUTHENTICATE_TYPE = #{AUTHENTICATE_TYPE,jdbcType=VARCHAR},
+      TYPE = #{TYPE,jdbcType=VARCHAR},
+      STATUS = #{STATUS,jdbcType=INTEGER},
+      REMARK = #{REMARK,jdbcType=VARCHAR},
+      USER_MAIN_ID = #{USER_MAIN_ID,jdbcType=VARCHAR},
+      ADD_TIME = #{ADD_TIME,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{UPDATE_TIME,jdbcType=TIMESTAMP},
+      ADD_BY = #{ADD_BY,jdbcType=VARCHAR},
+      UPDATE_BY = #{UPDATE_BY,jdbcType=VARCHAR},
+      SEX = #{SEX,jdbcType=VARCHAR},
+      BIRTHDAY = #{BIRTHDAY,jdbcType=DATE},
+      NATIONALITY = #{NATIONALITY,jdbcType=VARCHAR},
+      BIRTH_PLACE = #{BIRTH_PLACE,jdbcType=VARCHAR},
+      USER_OFFICE_FAX = #{USER_OFFICE_FAX,jdbcType=VARCHAR},
+      USER_OFFICE_PHONE = #{USER_OFFICE_PHONE,jdbcType=VARCHAR},
+      ALGORITHM = #{ALGORITHM,jdbcType=VARCHAR},
+      PWD_ENCRYPT = #{PWD_ENCRYPT,jdbcType=VARCHAR},
+      VIRTUAL_USER_TYPE = #{VIRTUAL_USER_TYPE,jdbcType=VARCHAR},
+      ORG_ID = #{ORG_ID,jdbcType=VARCHAR},
+      PWD = #{PWD,jdbcType=VARCHAR},
+      SHOW_ORDER = #{SHOW_ORDER,jdbcType=INTEGER},
+      USER_POST = #{USER_POST,jdbcType=VARCHAR},
+      USER_OFFICE_ADDRESS = #{USER_OFFICE_ADDRESS,jdbcType=VARCHAR},
+      USER_TITLE = #{USER_TITLE,jdbcType=VARCHAR},
+      CA_ID = #{CA_ID,jdbcType=VARCHAR},
+      CERT_TYPE = #{CERT_TYPE,jdbcType=VARCHAR},
+      PIN = #{PIN,jdbcType=VARCHAR},
+      IS_ACTIVE = #{IS_ACTIVE,jdbcType=INTEGER},
+      JOB_TITLE = #{JOB_TITLE,jdbcType=VARCHAR},
+      LOGIN_NAME = #{LOGIN_NAME,jdbcType=VARCHAR},
+      USER_NO = #{USER_NO,jdbcType=VARCHAR},
+      EXTINFO = #{EXTINFO,jdbcType=VARCHAR},
+      NUSER_HIREDATE = #{NUSER_HIREDATE,jdbcType=TIMESTAMP},
+      NUSER_LEAVEDATE = #{NUSER_LEAVEDATE,jdbcType=TIMESTAMP},
+      LEAVE_REASON = #{LEAVE_REASON,jdbcType=VARCHAR},
+      COUNTRY = #{COUNTRY,jdbcType=VARCHAR},
+      PRIVACY_LEVEL = #{PRIVACY_LEVEL,jdbcType=VARCHAR},
+      TENANT_ID = #{TENANT_ID,jdbcType=VARCHAR},
+      EXT = #{EXT,jdbcType=VARCHAR},
+      USER_SANAME = #{USER_SANAME,jdbcType=VARCHAR},
+      IS_MAIN_JOB_ORG = #{IS_MAIN_JOB_ORG,jdbcType=VARCHAR},
+      GROUP_JOB_DUTY = #{GROUP_JOB_DUTY,jdbcType=VARCHAR},
+      ORG_FULL_NAME = #{ORG_FULL_NAME,jdbcType=VARCHAR},
+      ORG_JOB_DUTY = #{ORG_JOB_DUTY,jdbcType=VARCHAR},
+      NODE_ID = #{NODE_ID,jdbcType=VARCHAR}
+    where USER_ID = #{USER_ID,jdbcType=VARCHAR}
+  </update>
+</mapper>
