@@ -13,6 +13,30 @@
 
     <dependencies>
         <dependency>
+            <groupId>${grounpId.version}</groupId>
+            <artifactId>dream-comm</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${grounpId.version}</groupId>
+            <artifactId>dream-dao</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${grounpId.version}</groupId>
+            <artifactId>dream-sso-service</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${grounpId.version}</groupId>
+            <artifactId>dream-order-service</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
