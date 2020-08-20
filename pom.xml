@@ -25,6 +25,8 @@
         <module>dream-search-service</module>
         <module>dream-shop-service</module>
         <module>dream-cart-service</module>
+        <module>dream-resource-service</module>
+        <module>dream-item-service</module>
     </modules>
 
     <properties>
