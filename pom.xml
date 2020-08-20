@@ -21,6 +21,10 @@
         <module>dream-dao</module>
         <module>dream-sso-service</module>
         <module>dream-order-service</module>
+        <module>dream-seckill-service</module>
+        <module>dream-search-service</module>
+        <module>dream-shop-service</module>
+        <module>dream-cart-service</module>
     </modules>
 
     <properties>
