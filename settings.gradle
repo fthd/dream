@@ -1,16 +1,29 @@
-rootProject.name = "dream-parent"
+rootProject.name = 'dream-parent'
 
-
-include ":dream-web"
-include ":dream-web-api"
-include ":dream-comm"
-include ":dream-dao"
-include ":dream-sso-service"
-include ":dream-order-service"
-include ":dream-seckill-service"
-include ":dream-search-service"
-include ":dream-shop-service"
-include ":dream-cart-service"
-include ":dream-resource-service"
-include ":dream-item-service"
+include ':dream-comm'
+include ':dream-dao-tools'
+include 'dream-sso-server:dream-sso-service'
+include 'dream-sso-server:dream-sso-web'
+include 'dream-shop-server:dream-shop-service'
+include 'dream-shop-server:dream-shop-web'
+include 'dream-cart-server:dream-cart-service'
+include 'dream-cart-server:dream-cart-web'
+include 'dream-item-server:dream-item-service'
+include 'dream-item-server:dream-item-web'
+include 'dream-order-server:dream-order-service'
+findProject(':dream-order-server:dream-order-service')?.name = 'dream-order-service'
+include 'dream-order-server:dream-order-web'
+findProject(':dream-order-server:dream-order-web')?.name = 'dream-order-web'
+include 'dream-resource-server:dream-resource-service'
+findProject(':dream-resource-server:dream-resource-service')?.name = 'dream-resource-service'
+include 'dream-resource-server:dream-resource-web'
+findProject(':dream-resource-server:dream-resource-web')?.name = 'dream-resource-web'
+include 'dream-search-server:dream-search-service'
+findProject(':dream-search-server:dream-search-service')?.name = 'dream-search-service'
+include 'dream-search-server:dream-search-web'
+findProject(':dream-search-server:dream-search-web')?.name = 'dream-search-web'
+include 'dream-seckill-server:dream-seckill-service'
+findProject(':dream-seckill-server:dream-seckill-service')?.name = 'dream-seckill-service'
+include 'dream-seckill-server:dream-seckill-web'
+findProject(':dream-seckill-server:dream-seckill-web')?.name = 'dream-seckill-web'
 

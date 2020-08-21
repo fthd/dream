@@ -1,0 +1,9 @@
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web:${spring_boot_version}"
+    implementation "org.springframework:spring-webflux:${spring_version}"
+    implementation "org.projectlombok:lombok:${lombok_version}"
+    implementation "io.springfox:springfox-swagger2:${swagger2_veriosn}"
+    implementation "io.springfox:springfox-swagger-ui:${swagger2_veriosn}"
+    implementation "io.springfox:springfox-spring-webmvc:${swagger2_veriosn}"
+    implementation "io.springfox:springfox-spring-webflux:${swagger2_veriosn}"
+}

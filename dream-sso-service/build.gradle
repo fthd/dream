@@ -1,4 +1,0 @@
-dependencies {
-    compile project(':dream-comm')
-    compile project(':dream-dao')
-}

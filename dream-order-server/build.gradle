@@ -1,0 +1,4 @@
+dependencies {
+    compile project(":dream-comm")
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${spring_boot_version}"
+}

@@ -1,5 +1,0 @@
-dependencies {
-    compile project(":dream-comm")
-    compile project(":dream-dao")
-    testImplementation "org.springframework.boot:spring-boot-starter-test:${spring_boot_version}"
-}
