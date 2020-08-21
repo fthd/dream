@@ -1,13 +1,11 @@
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.3.2.RELEASE'
-    implementation 'org.springframework:spring-webflux:5.2.8.RELEASE'
-    implementation 'org.projectlombok:lombok:1.18.12'
-    implementation 'io.springfox:springfox-swagger2:2.10.5'
-    implementation 'io.springfox:springfox-swagger-ui:2.10.5'
-    implementation 'io.springfox:springfox-spring-webmvc:2.10.5'
-    implementation 'io.springfox:springfox-spring-webflux:2.10.5'
-    providedCompile project(':dream-comm')
-    providedCompile project(':dream-dao')
-    providedCompile project(':dream-sso-service')
-    providedCompile project(':dream-order-service')
+    implementation "org.springframework.boot:spring-boot-starter-web:${spring_boot_version}"
+    implementation "org.springframework:spring-webflux:${spring_version}"
+    implementation "org.projectlombok:lombok:${lombok_version}"
+    implementation "io.springfox:springfox-swagger2:${swagger2_veriosn}"
+    implementation "io.springfox:springfox-swagger-ui:${swagger2_veriosn}"
+    implementation "io.springfox:springfox-spring-webmvc:${swagger2_veriosn}"
+    implementation "io.springfox:springfox-spring-webflux:${swagger2_veriosn}"
+    compile project(":dream-sso-service")
+    compile project(":dream-order-service")
 }
